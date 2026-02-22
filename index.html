@@ -153,21 +153,15 @@
       font-size: 0.95rem;
     }
     
-    /* Tables */
-    .table-wrap {
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-    
+    /* Tables - responsive stacking */
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
-      min-width: 400px;
     }
     
     th, td {
-      padding: 10px 12px;
+      padding: 8px 10px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
@@ -176,12 +170,74 @@
       background: var(--sage);
       color: white;
       font-weight: normal;
-      position: sticky;
-      top: 0;
     }
     
     tr:nth-child(even) {
       background: rgba(139, 154, 125, 0.1);
+    }
+    
+    /* Stack tables on mobile */
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      
+      thead {
+        display: none;
+      }
+      
+      tr {
+        margin-bottom: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        padding: 0.5rem;
+      }
+      
+      td {
+        border: none;
+        padding: 6px 10px;
+        position: relative;
+        padding-left: 40%;
+      }
+      
+      td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 35%;
+        font-weight: bold;
+        color: var(--sage);
+        font-size: 0.8rem;
+      }
+      
+      /* Reset for simple 2-col tables */
+      .simple-table td {
+        padding-left: 10px;
+      }
+      
+      .simple-table td:before {
+        display: none;
+      }
+      
+      .simple-table tr {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      
+      .simple-table td:first-child {
+        flex: 1;
+      }
+      
+      .simple-table td:last-child {
+        text-align: right;
+        font-weight: bold;
+        color: var(--copper);
+      }
     }
     
     /* Steps */
@@ -364,6 +420,49 @@
     .compact-list li {
       break-inside: avoid;
       margin-bottom: 0.4rem;
+    }
+    
+    /* Contact list */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .contact-item {
+      display: grid;
+      grid-template-columns: 140px 130px 1fr;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-size: 0.95rem;
+    }
+    
+    .contact-item strong {
+      color: var(--espresso);
+    }
+    
+    .contact-item a {
+      color: var(--copper);
+      text-decoration: none;
+    }
+    
+    .contact-item span {
+      color: #666;
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 600px) {
+      .contact-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.75rem;
+        background: white;
+        border-radius: 8px;
+        border-bottom: none;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      }
     }
     
     @media (max-width: 600px) {
@@ -699,17 +798,17 @@
       <h2>Your Service Stack</h2>
       <p>Six services — two are one-time filings.</p>
       
-      <div class="table-wrap">
-        <table>
-          <tr><th>Service</th><th>Purpose</th><th>Cost</th></tr>
-          <tr><td>LA Secretary of State</td><td>LLC + sales tax</td><td>$100</td></tr>
-          <tr><td>IRS</td><td>EIN</td><td>Free</td></tr>
-          <tr><td>Mercury</td><td>Banking</td><td>Free</td></tr>
-          <tr><td>Square</td><td>Payments, POS</td><td>2.6%+$0.10</td></tr>
-          <tr><td>Carrd</td><td>Website</td><td>$19/yr</td></tr>
-          <tr><td>Google Workspace</td><td>Email</td><td>$7/mo</td></tr>
-        </table>
-      </div>
+      <table>
+        <thead><tr><th>Service</th><th>Purpose</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Service">LA Secretary of State</td><td data-label="Purpose">LLC + sales tax</td><td data-label="Cost">$100</td></tr>
+          <tr><td data-label="Service">IRS</td><td data-label="Purpose">EIN</td><td data-label="Cost">Free</td></tr>
+          <tr><td data-label="Service">Mercury</td><td data-label="Purpose">Banking</td><td data-label="Cost">Free</td></tr>
+          <tr><td data-label="Service">Square</td><td data-label="Purpose">Payments, POS</td><td data-label="Cost">2.6%+$0.10</td></tr>
+          <tr><td data-label="Service">Carrd</td><td data-label="Purpose">Website</td><td data-label="Cost">$19/yr</td></tr>
+          <tr><td data-label="Service">Google Workspace</td><td data-label="Purpose">Email</td><td data-label="Cost">$7/mo</td></tr>
+        </tbody>
+      </table>
       
       <p><strong>Total fixed:</strong> Under $100/year + transaction fees</p>
     </div>
@@ -831,28 +930,24 @@
       <div class="grid">
         <div class="card">
           <h3>One-Time</h3>
-          <div class="table-wrap">
-            <table>
-              <tr><td>LLC (GeauxBIZ)</td><td>$100</td></tr>
-              <tr><td>EIN</td><td>Free</td></tr>
-              <tr><td>Square Reader</td><td>$49</td></tr>
-              <tr><td>ServSafe (each)</td><td>$50-150</td></tr>
-              <tr><td>Plans Review (if needed)</td><td>$100-1,000</td></tr>
-              <tr><th>Total</th><th>$300-1,400</th></tr>
-            </table>
-          </div>
+          <table class="simple-table">
+            <tr><td>LLC (GeauxBIZ)</td><td>$100</td></tr>
+            <tr><td>EIN</td><td>Free</td></tr>
+            <tr><td>Square Reader</td><td>$49</td></tr>
+            <tr><td>ServSafe (each)</td><td>$50-150</td></tr>
+            <tr><td>Plans Review</td><td>$100-1K</td></tr>
+          </table>
+          <p style="margin-top:0.75rem;"><strong>Total: $300-1,400</strong></p>
         </div>
         <div class="card">
           <h3>Annual</h3>
-          <div class="table-wrap">
-            <table>
-              <tr><td>Liability Insurance</td><td>$300-600</td></tr>
-              <tr><td>Website</td><td>$19-192</td></tr>
-              <tr><td>Google Workspace</td><td>$84</td></tr>
-              <tr><td>Mobile Permit (if needed)</td><td>$100-400</td></tr>
-              <tr><th>Total</th><th>$500-1,300</th></tr>
-            </table>
-          </div>
+          <table class="simple-table">
+            <tr><td>Liability Insurance</td><td>$300-600</td></tr>
+            <tr><td>Website</td><td>$19-192</td></tr>
+            <tr><td>Google Workspace</td><td>$84</td></tr>
+            <tr><td>Mobile Permit</td><td>$100-400</td></tr>
+          </table>
+          <p style="margin-top:0.75rem;"><strong>Total: $500-1,300/yr</strong></p>
         </div>
       </div>
     </div>
@@ -869,25 +964,25 @@
       <h3>Regional Administrators</h3>
       <p>Email format: firstname.lastname@la.gov</p>
       
-      <div class="table-wrap">
-        <table>
-          <tr><th>Region</th><th>Parishes</th><th>Contact</th></tr>
-          <tr>
-            <td>Region 2</td>
-            <td>Ascension, EBR</td>
-            <td>Krystal Kaufman<br><small>krystal.kaufman@la.gov</small></td>
-          </tr>
-          <tr>
-            <td>Region 1</td>
-            <td>Orleans, Jefferson</td>
-            <td>Dana Washington<br><small>dana.washington@la.gov</small></td>
-          </tr>
-          <tr>
-            <td>Region 3</td>
-            <td>St. John</td>
-            <td>Kayla Guerrero<br><small>kayla.guerrero@la.gov</small></td>
-          </tr>
-        </table>
+      <div class="grid">
+        <div class="card">
+          <h3>Region 2</h3>
+          <p><strong>Ascension, East Baton Rouge</strong></p>
+          <p>Krystal Kaufman<br>
+          <a href="mailto:krystal.kaufman@la.gov">krystal.kaufman@la.gov</a></p>
+        </div>
+        <div class="card">
+          <h3>Region 1</h3>
+          <p><strong>Orleans, Jefferson</strong></p>
+          <p>Dana Washington<br>
+          <a href="mailto:dana.washington@la.gov">dana.washington@la.gov</a></p>
+        </div>
+        <div class="card">
+          <h3>Region 3</h3>
+          <p><strong>St. John</strong></p>
+          <p>Kayla Guerrero<br>
+          <a href="mailto:kayla.guerrero@la.gov">kayla.guerrero@la.gov</a></p>
+        </div>
       </div>
       
       <div class="success">
@@ -902,35 +997,32 @@
       <h2>Parish Sanitarians</h2>
       <p>Direct contacts for permits and questions.</p>
       
-      <div class="table-wrap">
-        <table>
-          <tr><th>Parish</th><th>Phone</th><th>Address</th></tr>
-          <tr>
-            <td>Ascension</td>
-            <td>(225) 644-9030</td>
-            <td>828 S. Irma St, Gonzales</td>
-          </tr>
-          <tr>
-            <td>East Baton Rouge</td>
-            <td>(225) 242-4870</td>
-            <td>353 N. 12th St, Baton Rouge</td>
-          </tr>
-          <tr>
-            <td>St. John</td>
-            <td>(985) 444-5639</td>
-            <td>473 Central Ave, Reserve</td>
-          </tr>
-          <tr>
-            <td>Orleans</td>
-            <td>(504) 568-7970</td>
-            <td>935 Gravier St #1420, NOLA</td>
-          </tr>
-          <tr>
-            <td>Jefferson</td>
-            <td>(504) 838-5140</td>
-            <td>111 N. Causeway, Metairie</td>
-          </tr>
-        </table>
+      <div class="contact-list">
+        <div class="contact-item">
+          <strong>Ascension</strong>
+          <a href="tel:+12256449030">(225) 644-9030</a>
+          <span>828 S. Irma St, Gonzales</span>
+        </div>
+        <div class="contact-item">
+          <strong>East Baton Rouge</strong>
+          <a href="tel:+12252424870">(225) 242-4870</a>
+          <span>353 N. 12th St, Baton Rouge</span>
+        </div>
+        <div class="contact-item">
+          <strong>St. John</strong>
+          <a href="tel:+19854445639">(985) 444-5639</a>
+          <span>473 Central Ave, Reserve</span>
+        </div>
+        <div class="contact-item">
+          <strong>Orleans</strong>
+          <a href="tel:+15045687970">(504) 568-7970</a>
+          <span>935 Gravier St #1420, NOLA</span>
+        </div>
+        <div class="contact-item">
+          <strong>Jefferson</strong>
+          <a href="tel:+15048385140">(504) 838-5140</a>
+          <span>111 N. Causeway, Metairie</span>
+        </div>
       </div>
     </div>
   </section>
