@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twin Magnolia Coffee & Bakery — Startup Guide</title>
+  <style>
+    :root {
+      --magnolia: #F9F6F2;
+      --sage: #8B9A7D;
+      --espresso: #3C2415;
+      --cream: #FFF8F0;
+      --copper: #B87333;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--magnolia);
+      color: var(--espresso);
+      line-height: 1.6;
+    }
+    
+    .slide {
+      min-height: 100vh;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .slide:nth-child(even) {
+      background: var(--cream);
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--espresso);
+      font-weight: normal;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--sage);
+      font-weight: normal;
+      border-bottom: 2px solid var(--sage);
+      padding-bottom: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--copper);
+    }
+    
+    p, li {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    ul {
+      margin-left: 1.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--sage);
+      margin-bottom: 2rem;
+    }
+    
+    .highlight {
+      background: var(--sage);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .warning {
+      background: #FFF3CD;
+      border-left: 4px solid var(--copper);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .success {
+      background: #D4EDDA;
+      border-left: 4px solid var(--sage);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .card h3 {
+      margin-top: 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background: var(--sage);
+      color: white;
+    }
+    
+    tr:nth-child(even) {
+      background: rgba(139, 154, 125, 0.1);
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--copper);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      margin-right: 1rem;
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .step-content h3 {
+      margin-top: 0;
+    }
+    
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+    }
+    
+    .checklist li {
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+    }
+    
+    .nav {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    
+    .nav a {
+      background: var(--espresso);
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    
+    .logo {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    
+    .cost {
+      font-size: 1.8rem;
+      color: var(--copper);
+      font-weight: bold;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--sage);
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.8rem; }
+      .slide { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<section class="slide">
+  <div class="logo">TWIN MAGNOLIA</div>
+  <h1>Coffee & Bakery</h1>
+  <p class="subtitle">Business Startup Guide for Chelsea Obney & Courtney Naquin</p>
+  <p>A complete walkthrough for launching your event-based coffee and baked goods business across Louisiana parishes.</p>
+  <div style="margin-top: 3rem;">
+    <p><strong>Business Model:</strong> 30–50 events per year, mobile point-of-sale</p>
+    <p><strong>Ownership:</strong> 50/50 partnership</p>
+    <p><strong>Target Parishes:</strong> Ascension, East Baton Rouge, St. John, Orleans, Jefferson</p>
+  </div>
+</section>
+
+<!-- Slide 2: Overview -->
+<section class="slide">
+  <h2>The Big Picture</h2>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>🧁 Baked Goods</h3>
+      <p><strong>Cottage Food Law Eligible</strong></p>
+      <p>Cookies, cinnamon rolls, breads, pies — can be made from your home kitchen under Louisiana's cottage food exemption.</p>
+      <p class="cost">$0 permit fee</p>
+    </div>
+    
+    <div class="card">
+      <h3>☕ Cold Brew Coffee</h3>
+      <p><strong>Requires Permit</strong></p>
+      <p>Coffee service is NOT covered by cottage food law. Requires a Mobile Food Establishment permit from LDH.</p>
+      <p class="cost">~$200-400/yr</p>
+    </div>
+  </div>
+  
+  <div class="warning">
+    <strong>Key Insight:</strong> Your baked goods can operate under cottage food law, but serving coffee (even cold brew) requires a food service permit. This affects your facility requirements and startup costs.
+  </div>
+</section>
+
+<!-- Slide 3: Louisiana Cottage Food Law -->
+<section class="slide">
+  <h2>Louisiana Cottage Food Law</h2>
+  <p>Louisiana Act 542 (2014) allows home-based production of certain foods without a commercial kitchen.</p>
+  
+  <h3>What's Allowed</h3>
+  <ul>
+    <li>Baked goods: breads, cakes, cookies, pies</li>
+    <li>Candies and confections</li>
+    <li>Dried mixes</li>
+    <li>Jams, jellies, preserves</li>
+    <li>Honey and honeycomb products</li>
+    <li>Pickles and acidified foods (pH below 4.6)</li>
+    <li>Sauces and syrups</li>
+    <li>Spices</li>
+  </ul>
+  
+  <div class="success">
+    <strong>Good news:</strong> Custard and cream-filled items ARE allowed in Louisiana (unlike most states) — just use pasteurized milk products and follow temp requirements.
+  </div>
+
+  <h3>Restrictions for Breads/Cakes/Cookies/Pies</h3>
+  <ul>
+    <li>Cannot employ anyone to help with production</li>
+    <li>No pets allowed in preparation area — ever</li>
+    <li>Refrigerator must maintain 45°F or below</li>
+    <li>Cannot sell for resale (direct to consumer only)</li>
+  </ul>
+</section>
+
+<!-- Slide 4: Cottage Food Limits -->
+<section class="slide">
+  <h2>Cottage Food Requirements</h2>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>💰 Sales Limit</h3>
+      <p class="cost">$30,000/year</p>
+      <p>Annual gross revenue cap for cottage food operations (increased from $20K in 2022).</p>
+    </div>
+    
+    <div class="card">
+      <h3>📋 Registration</h3>
+      <p><strong>Sales Tax Certificate Required</strong></p>
+      <p>Register with Louisiana Dept of Revenue + local parish taxing authority.</p>
+    </div>
+    
+    <div class="card">
+      <h3>🎓 Training</h3>
+      <p><strong>Not Required</strong></p>
+      <p>No food handler certification needed for cottage food, but ServSafe is highly recommended.</p>
+    </div>
+    
+    <div class="card">
+      <h3>📍 Where You Can Sell</h3>
+      <ul style="font-size: 1rem;">
+        <li>Home (pickup/delivery)</li>
+        <li>Farmers markets</li>
+        <li>Roadside stands</li>
+        <li>Fairs & festivals</li>
+        <li>Community events</li>
+        <li>Online orders</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 5: Labeling -->
+<section class="slide">
+  <h2>Labeling Requirements</h2>
+  
+  <h3>Required Statement</h3>
+  <div class="warning">
+    <p style="font-size: 1.4rem; margin: 0;">"This product was produced in a home kitchen and not in a licensed or regulated facility."</p>
+  </div>
+  
+  <h3>Recommended Label Elements</h3>
+  <ul>
+    <li><strong>Product name</strong> — Common name of the food</li>
+    <li><strong>Business name & address</strong> — Twin Magnolia Coffee & Bakery, LLC</li>
+    <li><strong>Ingredients list</strong> — In descending order by weight</li>
+    <li><strong>Net weight or count</strong> — Standard measure</li>
+    <li><strong>Date produced</strong> — When the product was made</li>
+    <li><strong>Allergen statement</strong> — "Contains: wheat, eggs, milk" etc.</li>
+  </ul>
+  
+  <h3>The Big 9 Allergens</h3>
+  <p>Milk • Eggs • Wheat • Soy • Peanuts • Tree Nuts • Fish • Shellfish • Sesame</p>
+  
+  <div class="success">
+    <strong>For the dairy/non-dairy separation:</strong> Create separate labels clearly identifying which products contain dairy allergens. Consider batch coding to track production runs.
+  </div>
+</section>
+
+<!-- Slide 6: Coffee - The Permit Question -->
+<section class="slide">
+  <h2>Cold Brew Coffee — What You Need</h2>
+  
+  <div class="warning">
+    <strong>Coffee is NOT a cottage food.</strong> Even cold brew (no electricity, served cold) requires food service permitting because it's a beverage prepared for public consumption.
+  </div>
+  
+  <h3>Options for Coffee Service</h3>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>Option A: Mobile Food Establishment</h3>
+      <p>Get permitted as a mobile food vendor with LDH.</p>
+      <ul style="font-size: 1rem;">
+        <li>Requires approved commissary (shared commercial kitchen for prep/storage)</li>
+        <li>Plans review: $100 standard / $1,000 expedited</li>
+        <li>Annual permit fee: varies by parish</li>
+        <li>Food Safety Certification required</li>
+      </ul>
+      <p><strong>Best for:</strong> Full coffee service with hot options later</p>
+    </div>
+    
+    <div class="card">
+      <h3>Option B: Temporary Event Permits</h3>
+      <p>Get temporary permits for each event/market.</p>
+      <ul style="font-size: 1rem;">
+        <li>Per-event permits from parish health dept</li>
+        <li>Lower upfront cost</li>
+        <li>More paperwork per event</li>
+        <li>May have limitations on frequency</li>
+      </ul>
+      <p><strong>Best for:</strong> Testing the market, fewer events</p>
+    </div>
+  </div>
+  
+  <h3>Cold Brew Specifics</h3>
+  <p>Cold brew concentrate is typically considered a Time/Temperature Control for Safety (TCS) food because:</p>
+  <ul>
+    <li>It's a low-acid beverage (pH above 4.6)</li>
+    <li>Requires refrigeration at 41°F or below</li>
+    <li>Has a limited shelf life (typically 7-14 days refrigerated)</li>
+  </ul>
+</section>
+
+<!-- Slide 7: Service Stack -->
+<section class="slide">
+  <h2>Your Service Stack</h2>
+  <p>Six total services — two are one-time government filings. No unnecessary subscriptions.</p>
+  
+  <table>
+    <tr>
+      <th>Service</th>
+      <th>Purpose</th>
+      <th>Cost</th>
+    </tr>
+    <tr>
+      <td>LA Secretary of State</td>
+      <td>LLC formation + sales tax registration</td>
+      <td>$100 one-time</td>
+    </tr>
+    <tr>
+      <td>IRS</td>
+      <td>Employer Identification Number (EIN)</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td>Mercury</td>
+      <td>Business banking + bookkeeping</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td>Square</td>
+      <td>All payments, POS, invoicing</td>
+      <td>~2.6% + $0.10/tx</td>
+    </tr>
+    <tr>
+      <td>Carrd or Squarespace</td>
+      <td>Simple website</td>
+      <td>$19–$192/yr</td>
+    </tr>
+    <tr>
+      <td>Google Workspace</td>
+      <td>Shared business email</td>
+      <td>$7/mo</td>
+    </tr>
+  </table>
+  
+  <p><strong>Total fixed cost:</strong> Under $100/year plus transaction fees</p>
+</section>
+
+<!-- Slide 8: Setup Sequence -->
+<section class="slide">
+  <h2>Setup Sequence</h2>
+  <p>Order matters. Each step depends on the one before it.</p>
+  
+  <div class="step">
+    <span class="step-number">1</span>
+    <div class="step-content">
+      <h3>Register LLC — GeauxBIZ</h3>
+      <p><a href="https://geauxbiz.sos.la.gov">geauxbiz.sos.la.gov</a></p>
+      <p>File Articles of Organization. LLC name: Twin Magnolia Coffee & Bakery, LLC. Keep purpose broad: "retail sale of coffee, baked goods, and related food and beverage products." Member-managed, perpetual duration. Complete sales tax registration in the same flow. ~$100 filing fee.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">2</span>
+    <div class="step-content">
+      <h3>Get EIN — IRS</h3>
+      <p><a href="https://irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online">IRS EIN Application</a></p>
+      <p>Free, takes 10 minutes. Only available Mon–Fri, 7am–10pm Central. Select LLC, 2 members, "Started new business." Screenshot confirmation immediately.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">3</span>
+    <div class="step-content">
+      <h3>Open Mercury Account</h3>
+      <p><a href="https://mercury.com">mercury.com</a></p>
+      <p>Requires Articles of Organization + EIN. Add both Chelsea and Courtney as users. Set up transaction categorization from day one.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">4</span>
+    <div class="step-content">
+      <h3>Set Up Square</h3>
+      <p><a href="https://squareup.com">squareup.com</a></p>
+      <p>Link Mercury for deposits. Order Square Reader ($49). Build item library. Configure parish sales tax auto-calculation.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">5</span>
+    <div class="step-content">
+      <h3>Website & Email</h3>
+      <p>Carrd ($19/yr) for one-page site. Google Workspace ($7/mo) for hello@twinmagnoliacoffee.com.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9: Parish Requirements -->
+<section class="slide">
+  <h2>Parish-by-Parish Requirements</h2>
+  
+  <table>
+    <tr>
+      <th>Parish</th>
+      <th>Health Dept</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>East Baton Rouge</td>
+      <td>(225) 342-9500</td>
+      <td>LDH Region 2. Contact for mobile food permits.</td>
+    </tr>
+    <tr>
+      <td>Ascension</td>
+      <td>(225) 342-9500</td>
+      <td>LDH Region 2. Growing farmers market scene.</td>
+    </tr>
+    <tr>
+      <td>St. John the Baptist</td>
+      <td>(504) 568-5070</td>
+      <td>LDH Region 9 (New Orleans Metro).</td>
+    </tr>
+    <tr>
+      <td>Orleans</td>
+      <td>(504) 568-5070</td>
+      <td>Additional city permits may apply. Contact NOLA Health Dept.</td>
+    </tr>
+    <tr>
+      <td>Jefferson</td>
+      <td>(504) 568-5070</td>
+      <td>LDH Region 9. Popular event venues.</td>
+    </tr>
+  </table>
+  
+  <div class="warning">
+    <strong>Multi-parish operations:</strong> For cottage food (baked goods), your sales tax certificate from your home parish covers statewide sales. For mobile food (coffee), you may need to register with each parish you operate in.
+  </div>
+  
+  <h3>LDH Regional Contacts</h3>
+  <ul>
+    <li><strong>Region 2 (BR area):</strong> <a href="https://ldh.la.gov/page/oph-sanitarian-public-health-inspectors">Find your sanitarian</a></li>
+    <li><strong>Region 9 (NOLA area):</strong> (504) 568-5070</li>
+  </ul>
+</section>
+
+<!-- Slide 10: Pre-Event Checklist -->
+<section class="slide">
+  <h2>Before Your First Event</h2>
+  
+  <h3>Must Complete</h3>
+  <ul class="checklist">
+    <li><strong>LLC registered</strong> — GeauxBIZ, Articles of Organization filed</li>
+    <li><strong>EIN obtained</strong> — IRS confirmation saved</li>
+    <li><strong>Sales tax certificate</strong> — State + local parish</li>
+    <li><strong>Business bank account</strong> — Mercury or similar</li>
+    <li><strong>Payment processing</strong> — Square set up and tested</li>
+    <li><strong>Food Safety Certification</strong> — ServSafe for at least one partner (required for coffee service, recommended for baked goods)</li>
+    <li><strong>General liability insurance</strong> — $300–$600/year; most venues require proof</li>
+    <li><strong>Product labels</strong> — Cottage food statement + allergens</li>
+  </ul>
+  
+  <h3>For Coffee Service</h3>
+  <ul class="checklist">
+    <li><strong>Mobile food permit</strong> — Contact LDH or parish health dept</li>
+    <li><strong>Commissary agreement</strong> — Approved location for prep/storage</li>
+    <li><strong>Equipment inspection</strong> — Depending on parish requirements</li>
+    <li><strong>Cold holding documentation</strong> — Temp logs for cold brew</li>
+  </ul>
+  
+  <h3>For Each Event</h3>
+  <ul class="checklist">
+    <li><strong>Venue requirements</strong> — Insurance certificate, permits</li>
+    <li><strong>Temporary permit</strong> — If required by parish or event</li>
+    <li><strong>Supplies stocked</strong> — Cups, napkins, ice, etc.</li>
+  </ul>
+</section>
+
+<!-- Slide 11: Allergy Management -->
+<section class="slide">
+  <h2>Dairy/Non-Dairy Separation</h2>
+  <p>Managing allergens is critical for safety and liability.</p>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>Separate Production</h3>
+      <ul>
+        <li>Dedicate specific days or times for dairy-free production</li>
+        <li>Use separate mixing bowls, utensils, and baking pans</li>
+        <li>Thoroughly clean all surfaces between batches</li>
+        <li>Store dairy and non-dairy ingredients separately</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>Labeling Protocol</h3>
+      <ul>
+        <li>Clearly mark "DAIRY FREE" on non-dairy products</li>
+        <li>List all allergens on every label</li>
+        <li>Consider color-coded labels (green = dairy-free)</li>
+        <li>Include "Made in a facility that also processes dairy"</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="warning">
+    <strong>Documentation:</strong> Keep a production log showing when dairy vs. non-dairy batches were made. This protects you in case of any claims and demonstrates due diligence.
+  </div>
+  
+  <h3>For Cold Brew</h3>
+  <p>Offer dairy-free milk alternatives (oat, almond, coconut) with clearly labeled options. Use separate pitchers for each type.</p>
+</section>
+
+<!-- Slide 12: Operating Agreement -->
+<section class="slide">
+  <h2>Operating Agreement Essentials</h2>
+  <p>A 50/50 LLC needs clear rules for decisions and disputes.</p>
+  
+  <h3>Key Sections</h3>
+  <div class="grid">
+    <div class="card">
+      <h3>Ownership & Capital</h3>
+      <ul style="font-size: 1rem;">
+        <li>50% Chelsea, 50% Courtney</li>
+        <li>Document initial contributions (cash, equipment)</li>
+        <li>Profit/loss split: 50/50</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>Decision Making</h3>
+      <ul style="font-size: 1rem;">
+        <li>Day-to-day: either partner up to $250-500</li>
+        <li>Major decisions: unanimous consent</li>
+        <li>Deadlock resolution: mediation clause</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>Roles & Compensation</h3>
+      <ul style="font-size: 1rem;">
+        <li>Define who handles what</li>
+        <li>Purchasing, events, finances, marketing</li>
+        <li>Compensation: profit distributions only (typical for small LLC)</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>Exit & Dissolution</h3>
+      <ul style="font-size: 1rem;">
+        <li>Right of first refusal on transfers</li>
+        <li>Buyout valuation method</li>
+        <li>Death/incapacity provisions</li>
+      </ul>
+    </div>
+  </div>
+  
+  <p style="margin-top: 2rem;"><strong>Resources:</strong> NOLO, Rocket Lawyer, and Northwest Registered Agent offer Louisiana-specific templates. Consider $500-1,000 for attorney review if any complexity.</p>
+</section>
+
+<!-- Slide 13: Costs Summary -->
+<section class="slide">
+  <h2>Startup & Operating Costs</h2>
+  
+  <h3>One-Time Costs</h3>
+  <table>
+    <tr><th>Item</th><th>Cost</th></tr>
+    <tr><td>LLC Formation (GeauxBIZ)</td><td>$100</td></tr>
+    <tr><td>EIN</td><td>Free</td></tr>
+    <tr><td>Square Reader</td><td>$49</td></tr>
+    <tr><td>ServSafe Certification (each)</td><td>$50-150</td></tr>
+    <tr><td>Mobile Food Plans Review (if needed)</td><td>$100-1,000</td></tr>
+    <tr><td><strong>Total One-Time</strong></td><td><strong>$300-1,400</strong></td></tr>
+  </table>
+  
+  <h3>Annual Costs</h3>
+  <table>
+    <tr><th>Item</th><th>Cost</th></tr>
+    <tr><td>General Liability Insurance</td><td>$300-600</td></tr>
+    <tr><td>Website (Carrd or similar)</td><td>$19-192</td></tr>
+    <tr><td>Google Workspace</td><td>$84</td></tr>
+    <tr><td>Mobile Food Permit (if applicable)</td><td>$100-400</td></tr>
+    <tr><td><strong>Total Annual Fixed</strong></td><td><strong>$500-1,300</strong></td></tr>
+  </table>
+  
+  <p><strong>Per-Transaction:</strong> Square ~2.6% + $0.10</p>
+</section>
+
+<!-- Slide 14: Contacts & Resources -->
+<section class="slide">
+  <h2>Key Contacts & Resources</h2>
+  
+  <h3>State Agencies</h3>
+  <ul>
+    <li><strong>LA Dept of Health — Retail Food:</strong> (225) 342-9500</li>
+    <li><strong>LA Dept of Agriculture:</strong> 1-866-927-2476</li>
+    <li><strong>LA Dept of Revenue:</strong> <a href="http://revenue.louisiana.gov">revenue.louisiana.gov</a></li>
+    <li><strong>GeauxBIZ Portal:</strong> <a href="https://geauxbiz.sos.la.gov">geauxbiz.sos.la.gov</a></li>
+  </ul>
+  
+  <h3>Health Inspectors</h3>
+  <ul>
+    <li><strong>Find Your Sanitarian:</strong> <a href="https://ldh.la.gov/page/oph-sanitarian-public-health-inspectors">ldh.la.gov/page/oph-sanitarian-public-health-inspectors</a></li>
+  </ul>
+  
+  <h3>Legal & Regulatory</h3>
+  <ul>
+    <li><strong>LA Cottage Food Law:</strong> <a href="https://legis.la.gov/legis/ViewDocument.aspx?d=1288943">Act 542 / HB 828</a></li>
+    <li><strong>LA Admin Code Title 51 (Retail Food):</strong> <a href="http://www.doa.la.gov/Pages/osr/lac/books.aspx">doa.la.gov</a></li>
+  </ul>
+  
+  <h3>Business Resources</h3>
+  <ul>
+    <li><strong>Operating Agreement Templates:</strong> <a href="https://nolo.com">NOLO</a>, <a href="https://rocketlawyer.com">Rocket Lawyer</a></li>
+    <li><strong>Liability Insurance:</strong> <a href="https://fliprogram.com">FLIP</a>, or local agents</li>
+    <li><strong>Cottage Food Community:</strong> <a href="https://cottagefoodlaws.com">cottagefoodlaws.com</a></li>
+  </ul>
+</section>
+
+<!-- Slide 15: Next Steps -->
+<section class="slide">
+  <h2>Immediate Next Steps</h2>
+  
+  <div class="step">
+    <span class="step-number">1</span>
+    <div class="step-content">
+      <h3>Decide on Coffee Service Approach</h3>
+      <p>Option A (Mobile Food Permit) or Option B (Temporary Event Permits). This determines your startup timeline and costs.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">2</span>
+    <div class="step-content">
+      <h3>Call LDH Region 2</h3>
+      <p>(225) 342-9500 — Ask specifically about cold brew coffee requirements for mobile/event service. Get it in writing.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">3</span>
+    <div class="step-content">
+      <h3>Register the LLC</h3>
+      <p>GeauxBIZ — can be done in one session. Complete sales tax registration in the same flow.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">4</span>
+    <div class="step-content">
+      <h3>Draft Operating Agreement</h3>
+      <p>Chelsea and Courtney should discuss decision-making, roles, and deadlock resolution before signing.</p>
+    </div>
+  </div>
+  
+  <div class="step">
+    <span class="step-number">5</span>
+    <div class="step-content">
+      <h3>Get ServSafe Certified</h3>
+      <p>At least one of you needs Food Safety Certification. Required for coffee service, recommended for credibility regardless.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>Prepared by Carl @ obney.ai • February 2026</p>
+  <p>This guide is for informational purposes. Always verify current requirements with Louisiana state agencies.</p>
+</footer>
+
+</body>
+</html>
